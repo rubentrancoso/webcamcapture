@@ -21,22 +21,18 @@
 			<artifactId>automenu</artifactId>
 			<version>0.0.1-snapshot</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.github.sarxos</groupId>
+			<artifactId>webcam-capture</artifactId>
+			<version>0.3.12</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
 		<finalName>picinpic</finalName>
 		<plugins>
-
-			<!-- download source code in Eclipse, best practice -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.9</version>
-				<configuration>
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>false</downloadJavadocs>
-				</configuration>
-			</plugin>
 
 			<!-- Set a JDK compiler level -->
 			<plugin>
@@ -49,24 +45,49 @@
 				</configuration>
 			</plugin>
 
-			<!-- Make this jar executable -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.2.0</version>
-				<configuration>
-					<!-- DO NOT include log4j.properties file in your Jar -->
-					<excludes>
-						<exclude>**/log4j.properties</exclude>
-					</excludes>
-					<archive>
-						<manifest>
-							<mainClass>com.tivit.component.WebcamTest</mainClass>
-						</manifest>
-					</archive>
-				</configuration>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>attached</goal>
+						</goals>
+						<phase>package</phase>
+						<configuration>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+							<archive>
+								<manifest>
+									<mainClass>com.tivit.component.WebcamTest</mainClass>
+								</manifest>
+							</archive>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
+
 		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.2.0</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<addClasspath>true</addClasspath>
+								<mainClass>com.tivit.component.WebcamTest</mainClass>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
 	</build>
 </project>

@@ -1,5 +1,4 @@
 echo on
-jar cmf src\META-INF\MANIFEST.MF picinpic.jar WebcamTest.java
-REM call mvn dependency:resolve
-REM call mvn install
-REM call mvn package -DskipTests -U
+call mvn clean install -U
+call mvn package
+call java -jar target\picinpic-jar-with-dependencies.jar
