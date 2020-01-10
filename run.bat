@@ -1,1 +1,1 @@
-java -jar target\picinpic-jar-with-dependencies.jar
+java -cp target -jar target\picinpic-jar-with-dependencies.jar
