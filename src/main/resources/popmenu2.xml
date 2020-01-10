@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE apopmenu>
+<menu name="Main" icons="true" font="Tahoma" size="11" editable="true" adjustIcons="true">
+	<item id="10.01" name="Record Start" type="action" icon="icons/control-record-icon.png"/>
+	<item id="10.02" name="Record Stop" type="action" icon="icons/media-controls-stop-icon.png"/>
+	<item id="10.00" name="Exit" type="action" icon="icons/exit-icon.png"/>
+</menu>
